@@ -1,0 +1,84 @@
+.detail {
+  display: flex;
+  position: relative;
+  width: calc(100% - 4rem);
+  max-width: 800px;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  background-color: white;
+  border-left: 5px solid var(--highlight);
+  flex-flow: row-reverse;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.detail main {
+  padding: 1rem;
+}
+
+.detail main a {
+  border-bottom: 1px solid;
+  transition: border 300ms ease-out;
+}
+
+.detail main a:hover {
+  border-color: var(--highlight);
+}
+
+.detail footer {
+  text-align: right;
+}
+
+.detail footer a {
+  display: inline-block;
+  padding: 12px 18px;
+  font-weight: 600;
+  background-color: var(--highlight);
+  transition: background 300ms ease-out, color 300ms ease-out;
+}
+
+.detail footer a:hover {
+  color: white;
+  background-color: black;
+}
+
+.detail aside img {
+  max-width: 100%;
+}
+
+.detailTitle {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.detailTitle h1 {
+  margin: 0 0 8px;
+  font-family: 'Arvo', serif;
+  font-size: 2rem;
+}
+
+.detailTitle p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.detailImage,
+.detailMain  {
+  width: 50%;
+}
+
+.detailMain {
+  padding-right: 1rem;
+}
+
+.detailImage {
+  font-size: 0;
+}
+
+.detail footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
