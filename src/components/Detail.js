@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import Related from "./Related"
 import styles from "./Detail.module.css"
 
 const Detail = (props) => {
@@ -14,6 +15,7 @@ const Detail = (props) => {
           {props.author && <p>By {props.author}</p>}
         </div>
         {props.isbn && <p>ISBN: {props.isbn}</p>}
+        {props.author && <Related author={props.author} current={props.name} />}
       </main>
       <footer>
         <Link to="/">Back to reading list</Link>
