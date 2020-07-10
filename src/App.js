@@ -4,6 +4,7 @@ import axios from "axios"
 import { connect } from "react-redux"
 import { setBookList } from "./store/actions"
 import Home from "./pages/Home"
+import BookPage from "./pages/BookPage"
 import styles from "./App.module.css"
 
 function App(props) {
@@ -38,6 +39,7 @@ function App(props) {
     <div className={styles.app}>
       <Router>
         <Switch>
+          <Route path="/book/:bookSlug" component={BookPage} />
           <Route exact path="/" component={Home} />
         </Switch>
       </Router>
