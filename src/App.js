@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import axios from "axios"
+import Home from "./pages/Home"
 import styles from "./App.module.css"
-import Header from "./components/Header"
-import Loader from "./components/Loader"
-import List from "./components/List"
 
 function App() {
   const [{isLoading, bookList}, setBookList] = useState({
@@ -39,8 +38,11 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <Header />
-      {isLoading ? <Loader /> : <List books={bookList} />}
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+        </Switch>
+      </Router>
     </div>
   )
 }
