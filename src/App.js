@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import axios from "axios"
+import { connect } from "react-redux"
+import { setBookList } from "./store/actions"
 import Home from "./pages/Home"
 import styles from "./App.module.css"
 
-function App() {
-  const [{isLoading, bookList}, setBookList] = useState({
-    isLoading: true,
-    bookList: []
-  })
+function App(props) {
   const url = `http://localhost:3000/data.json`
   const CancelToken = axios.CancelToken;
   const source = CancelToken.source()
@@ -18,10 +16,10 @@ function App() {
       cancelToken: source.token
     })
       .then(response => {
-        setBookList({
+        props.dispatch(setBookList({
           isLoading: false,
           bookList: response.data.books
-        })
+        }))
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -47,4 +45,11 @@ function App() {
   )
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return {
+    isLoading: state.books.isLoading,
+    bookList: state.books.bookList
+  }
+}
+
+export default connect(mapStateToProps, null)(App)
