@@ -2,11 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;1,300&family=Open+Sans:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap');
 
+:root {
+  --text: black;
+  --bg: #f6f6f6;
+  --highlight: #0DF6A7;
+}
+
 body {
   max-width: 100%;
   min-height: 100%;
   margin: 0;
   font-family: 'Nunito', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
