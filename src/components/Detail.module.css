@@ -1,16 +1,23 @@
+@keyframes fadeInAnim {
+  0% {
+    transform: translateY(20px);
+    visibility: hidden;
+  }
+  100% {
+    transform: translateY(0);
+    visibility: visible;
+  }
+}
+
 .detail {
-  display: flex;
-  position: relative;
   width: calc(100% - 4rem);
-  max-width: 800px;
+  max-width: 600px;
   margin-right: auto;
   margin-bottom: 2rem;
   margin-left: auto;
   background-color: white;
-  border-left: 5px solid var(--highlight);
-  flex-flow: row-reverse;
-  flex-wrap: nowrap;
-  align-items: center;
+  border-top: 5px solid var(--highlight);
+  animation: fadeInAnim 300ms 200ms ease-out both;
 }
 
 .detail main {
@@ -55,30 +62,50 @@
 .detailTitle h1 {
   margin: 0 0 8px;
   font-family: 'Arvo', serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .detailTitle p {
   margin: 0;
-  font-size: 1.2rem;
   font-style: italic;
 }
 
-.detailImage,
-.detailMain  {
-  width: 50%;
-}
+@media screen and (min-width: 1024px) {
 
-.detailMain {
-  padding-right: 1rem;
-}
+  .detail {
+    display: flex;
+    max-width: 800px;
+    border-top: none;
+    border-left: 5px solid var(--highlight);
+    flex-flow: row-reverse;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
 
-.detailImage {
-  font-size: 0;
-}
+  .detailTitle h1 {
+    font-size: 2rem;
+  }
 
-.detail footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  .detailTitle p {
+    font-size: 1.2rem;
+  }
+
+  .detailImage,
+  .detailMain  {
+    width: 50%;
+  }
+
+  .detailMain {
+    padding-right: 1rem;
+  }
+
+  .detailImage {
+    font-size: 0;
+  }
+
+  .detail footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
 }

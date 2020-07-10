@@ -1,29 +1,37 @@
+@keyframes fadeInAnim {
+  0% {
+    transform: translateY(20px);
+    visibility: hidden;
+  }
+  100% {
+    transform: translateY(0);
+    visibility: visible;
+  }
+}
+
 .header {
   display: flex;
-  padding: 2rem;
   max-width: 1400px;
+  padding: 2rem;
   margin-right: auto;
   margin-left: auto;
   font-family: 'Arvo', serif;
   font-size: 32px;
   font-weight: 700;
   align-items: center;
+  animation: fadeInAnim 300ms 100ms ease-out both;
 }
 
 .header span {
   position: relative;
-  padding-right: 1rem;
   line-height: 1;
 }
 
-.header span::after {
-  content: '';
+.header b {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  right: 0;
-  bottom: 3px;
+  left: 100%;
+  bottom: 0px;
   margin-left: 4px;
-  background-color: var(--highlight);
-  border-radius: 100%;
+  color: var(--highlight);
+  font-size: 48px;
 }
