@@ -5,6 +5,7 @@
 :root {
   --text: black;
   --bg: #f6f6f6;
+  --border: #fff;
   --highlight: #0DF6A7;
 }
 
@@ -16,6 +17,25 @@ body {
   background-color: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  right: 0;
+  left: 0;
+  height: 1rem;
+  background-color: var(--border);
+  z-index: 10;
+}
+
+body::before {
+  top: 0;
+}
+
+body::after {
+  bottom: 0;
 }
 
 a {

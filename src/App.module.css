@@ -1,1 +1,24 @@
-.app {}
+.app {
+  max-width: 100%;
+  min-height: 100%;
+}
+
+.app::before,
+.app::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 1rem;
+  background-color: var(--border);
+  z-index: 10;
+}
+
+.app::before {
+  left: 0;
+}
+
+.app::after {
+  right: 0;
+}
+
