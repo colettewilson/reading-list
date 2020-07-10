@@ -1,0 +1,79 @@
+.list {
+  display: grid;
+  max-width: 1400px;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  margin: 0 auto 2rem;
+  list-style: none;
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  align-items: start;
+}
+
+.list li {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  background-color: var(--border);
+  border-top: 5px solid var(--highlight);
+  grid-column-end: span 1;
+  transition: border 300ms ease-out;
+}
+
+.list li:hover {
+  border-color: black;
+}
+
+.list li:hover img {
+  filter: grayscale(0);
+}
+
+.list li:hover span {
+  color: white;
+  background-color: black;
+}
+
+.list li header {
+  padding: 1rem;
+}
+
+.list li h3,
+.list li p {
+  margin: 0;
+}
+
+.list li p {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.list li footer {
+  text-align: right;
+}
+
+.list li span {
+  display: inline-block;
+  padding: 12px 18px;
+  font-weight: 600;
+  background-color: var(--highlight);
+  transition: background 300ms ease-out, color 300ms ease-out;
+}
+
+.listImage {
+  position: relative;
+  padding-bottom: calc(480 / 640 * 100%);
+  background-color: var(--highlight);
+}
+
+.listImage img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(100%);
+  transform: translate(-50%, -50%);
+  transition: filter 300ms ease-out;
+}

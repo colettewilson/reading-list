@@ -3,6 +3,7 @@ import axios from "axios"
 import styles from "./App.module.css"
 import Header from "./components/Header"
 import Loader from "./components/Loader"
+import List from "./components/List"
 
 function App() {
   const [{isLoading, bookList}, setBookList] = useState({
@@ -36,12 +37,10 @@ function App() {
     }
   }, [])
 
-  console.log(isLoading, bookList)
-
   return (
     <div className={styles.app}>
       <Header />
-      <Loader />
+      {isLoading ? <Loader /> : <List books={bookList} />}
     </div>
   )
 }
