@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import Related from "./Related"
 import styles from "./Detail.module.css"
 
-const Detail = ({ book }) => {
+const Detail = ({ book, related }) => {
   if (!book) return null
   return (
     <article className={styles.detail}>
@@ -13,14 +13,14 @@ const Detail = ({ book }) => {
       </aside>
       <main className={styles.detailMain}>
         <div className={styles.detailTitle}>
-          <h1>{book.name}</h1>
-          <p>By {book.author}</p>
+          <h1 data-testid="book-name">{book.name}</h1>
+          <p data-testid="book-author">By {book.author}</p>
         </div>
-        <p>ISBN: {book.isbn}</p>
-        {/*book.author && <Related author={book.author} current={book.name} />*/}
+        <p data-testid="book-isbn">ISBN: {book.isbn}</p>
+        {related && <Related titles={related} />}
       </main>
       <footer>
-        <Link to="/">Back to reading list</Link>
+        <Link to="/" data-testid="home-link">Back to reading list</Link>
       </footer>
     </article>
   )
