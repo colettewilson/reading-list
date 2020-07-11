@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
 import { slugify } from "../helpers/slugify"
 import styles from "./List.module.css"
@@ -25,3 +26,14 @@ const List = (props) => {
 }
 
 export default List
+
+List.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      cover: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      isbn:PropTypes.string.isRequired
+    })
+  ).isRequired
+}
