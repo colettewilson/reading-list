@@ -1,21 +1,23 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
 import Related from "./Related"
 import styles from "./Detail.module.css"
 
-const Detail = (props) => {
+const Detail = ({ book }) => {
+  if (!book) return null
   return (
     <article className={styles.detail}>
-      {props.cover && <aside className={styles.detailImage}>
-        <img src={props.cover} alt={`${props.name ? props.name : "Book"} cover`} />
-      </aside>}
+      <aside className={styles.detailImage}>
+        <img src={book.cover} alt={`${book.name ? book.name : "Book"} cover`} />
+      </aside>
       <main className={styles.detailMain}>
         <div className={styles.detailTitle}>
-          {props.name && <h1>{props.name}</h1>}
-          {props.author && <p>By {props.author}</p>}
+          <h1>{book.name}</h1>}
+          <p>By {book.author}</p>}
         </div>
-        {props.isbn && <p>ISBN: {props.isbn}</p>}
-        {props.author && <Related author={props.author} current={props.name} />}
+        <p>ISBN: {book.isbn}</p>
+        {/*book.author && <Related author={book.author} current={book.name} />*/}
       </main>
       <footer>
         <Link to="/">Back to reading list</Link>
@@ -25,3 +27,12 @@ const Detail = (props) => {
 }
 
 export default Detail
+
+Detail.propTypes = {
+  book: PropTypes.shape({
+    cover: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    isbn:PropTypes.string.isRequired
+  }).isRequired
+}
