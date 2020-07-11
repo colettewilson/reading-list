@@ -6,7 +6,7 @@ import styles from "./List.module.css"
 
 const List = (props) => {
   return (
-    <ul className={styles.list}>
+    <ul className={styles.list} data-testid="content">
       {props.books && props.books.map(book =>
         <li key={book.book_id}>
           <Link to={`/book/${slugify(book.name)}`} data-testid="book-link">

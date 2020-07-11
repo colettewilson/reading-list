@@ -1,24 +1,19 @@
 import React from 'react'
-import { render, cleanup } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { MemoryRouter } from "react-router-dom"
 import List from "./List"
 import { slugify } from "../helpers/slugify"
 
-global.fetch = require("jest-fetch-mock")
-
-afterEach(() => {
-  cleanup()
-  console.error.mockClear()
-})
+afterEach(() => console.error.mockClear())
 
 console.error = jest.fn()
 
 const books = [{
   book_id: 1,
   cover: "test-image.jpg",
-  name: "Test Book Name",
+  name: "Test Book Name 1",
   author: "Author Name",
-  isbn: "123456"
+  isbn: "123"
 }]
 
 describe('List Component', () => {
@@ -28,7 +23,7 @@ describe('List Component', () => {
   })
 
   test('should render without error', () => {
-    const { getByTestId } = render(<MemoryRouter><List books={books} /></MemoryRouter>)
+    const { getByTestId, getAllByTestId } = render(<MemoryRouter><List books={books} /></MemoryRouter>)
 
     expect(console.error).not.toHaveBeenCalled()
     expect(getByTestId("book-link").getAttribute("href")).toBe(`/book/${slugify(books[0].name)}`)

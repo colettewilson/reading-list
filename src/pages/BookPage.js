@@ -9,16 +9,19 @@ const BookPage = (props) => {
   return (
     <>
       <Header />
-      {props.isLoading ? <Loader /> : <Detail {...props.book} />}
+      {props.isLoading ? <Loader /> : <Detail book={props.book} related={props.related} />}
     </>
   )
 }
 
 const mapStateToProps = (state, ownProps) => {
   let slug = ownProps.match.params.bookSlug
+  let book = state.books.bookList.find(b => slugify(b.name) === slug)
+  let related = state.books.bookList.filter(b => b.author === book.author && b.name !== book.name)
   return {
     isLoading: state.books.isLoading,
-    book: state.books.bookList.find(b => slugify(b.name) === slug)
+    book: book,
+    related: related.length > 0 && related
   }
 }
 
