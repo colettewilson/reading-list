@@ -9,11 +9,11 @@ const List = (props) => {
     <ul className={styles.list}>
       {props.books && props.books.map(book =>
         <li key={book.book_id}>
-          <Link to={`/book/${slugify(book.name)}`}>
-            {book.cover && <div className={styles.listImage}><img src={book.cover} alt={`${book.name} cover`} /></div>}
+          <Link to={`/book/${slugify(book.name)}`} data-testid="book-link">
+            <div className={styles.listImage}><img src={book.cover} alt={`${book.name} cover`} /></div>
             <header>
-              {book.name && <h3>{book.name}</h3>}
-              {book.author && <p>{book.author}</p>}
+              <h3 data-testid="book-name">{book.name}</h3>
+              <p data-testid="book-author">{book.author}</p>
             </header>
             <footer>
               <span>More info</span>
@@ -30,6 +30,7 @@ export default List
 List.propTypes = {
   books: PropTypes.arrayOf(
     PropTypes.shape({
+      book_id: PropTypes.number.isRequired,
       cover: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       author: PropTypes.string.isRequired,
