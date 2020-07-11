@@ -17,7 +17,7 @@ const Detail = ({ book, related }) => {
           <p data-testid="book-author">By {book.author}</p>
         </div>
         <p data-testid="book-isbn">ISBN: {book.isbn}</p>
-        {related && <Related titles={related} />}
+        {related && <Related titles={related} author={book.author} />}
       </main>
       <footer>
         <Link to="/" data-testid="home-link">Back to reading list</Link>
