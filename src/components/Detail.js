@@ -13,8 +13,8 @@ const Detail = ({ book }) => {
       </aside>
       <main className={styles.detailMain}>
         <div className={styles.detailTitle}>
-          <h1>{book.name}</h1>}
-          <p>By {book.author}</p>}
+          <h1>{book.name}</h1>
+          <p>By {book.author}</p>
         </div>
         <p>ISBN: {book.isbn}</p>
         {/*book.author && <Related author={book.author} current={book.name} />*/}
