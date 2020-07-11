@@ -8,10 +8,11 @@ afterEach(cleanup)
 describe("Header Component", () => {
   test("should render without error", () => {
     const { container, getByTestId } = render(<MemoryRouter><Header /></MemoryRouter>)
-    const header = getByTestId('header')
-    const link = getByTestId('home-link')
+    const header = getByTestId("header")
+    const link = getByTestId("home-link")
 
     expect(header).toBeInTheDocument()
     expect(header).toContainElement(link)
+    expect(link.getAttribute("href")).toBe("/")
   })
 })
