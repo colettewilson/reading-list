@@ -1,19 +1,15 @@
 import React from "react"
-import axiosMock from "axios"
 import { createStore } from "redux"
 import { Provider } from "react-redux"
 import { render, waitForElement } from '@testing-library/react'
 import reducer from "./store/reducers"
 import App from "./App"
 
-// jest.mock("axios")
+global.fetch = require("jest-fetch-mock")
 
 afterEach(() => console.error.mockClear())
 
 console.error = jest.fn()
-
-// const CancelToken = axiosMock.CancelToken
-// const source = CancelToken.source()
 
 const initialState = {
   isLoading: true,
@@ -45,19 +41,17 @@ describe("App Component", () => {
     renderWithRedux(<App />)
   })
 
-  // test("should display loader before promise returns", () => {
-  //   const { getByTestId } = renderWithRedux(<App />)
-  //   expect(getByTestId("loader")).toBeTruthy()
-  // })
+  test("should display loader before promise returns", () => {
+    const { getByTestId } = renderWithRedux(<App />)
+    expect(getByTestId("loader")).toBeTruthy()
+  })
 
-  // test("should display loader before promise returns", async () => {
-  //   axiosMock.get(url, { cancelToken: source.token })
-  //   const { getByTestId, queryByTestId } = renderWithRedux(<App />)
+  test("should display loader before promise returns", async () => {
+    fetch.mockResponseOnce(JSON.stringify(books))
+    const { getByTestId, queryByTestId } = renderWithRedux(<App />)
 
-  //   await waitForElement(() => { getByTestId("content") })
-
-  //   expect(axiosMock.get).toHaveBeenCalledTimes(1)
-  //   expect(queryByTestId("loader")).toBeFalsy()
-  // })
+    // await waitForElement(() => { getByTestId("content") })
+    // expect(queryByTestId("loader")).toBeFalsy()
+  })
 })
 

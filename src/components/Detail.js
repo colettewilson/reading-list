@@ -7,7 +7,7 @@ import styles from "./Detail.module.css"
 const Detail = ({ book, related }) => {
   if (!book) return null
   return (
-    <article className={styles.detail}>
+    <article className={styles.detail} data-testid="content">
       <aside className={styles.detailImage}>
         <img src={book.cover} alt={`${book.name ? book.name : "Book"} cover`} />
       </aside>
