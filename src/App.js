@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import axios from "axios"
 import { connect } from "react-redux"
 import { setBookList } from "./store/actions"
 import Home from "./pages/Home"
@@ -8,18 +7,17 @@ import BookPage from "./pages/BookPage"
 import styles from "./App.module.css"
 
 function App(props) {
-  const url = `http://localhost:3000/data.json`
-  const CancelToken = axios.CancelToken;
-  const source = CancelToken.source()
+  const url = `https://unruffled-austin-0672da.netlify.app/data.json`
+  const controller = new AbortController()
+  const signal = controller.signal
 
-  const fetchData = async() => {
-    await axios.get(url, {
-      cancelToken: source.token
-    })
-      .then(response => {
+  const fetchData = async () => {
+    await fetch(`https://cors-anywhere.herokuapp.com/${url}`, { signal })
+      .then(response => response.json())
+      .then(data => {
         props.dispatch(setBookList({
           isLoading: false,
-          bookList: response.data.books
+          bookList: data.books
         }))
       })
       .catch((error) => {
@@ -31,7 +29,7 @@ function App(props) {
     fetchData()
 
     return () => {
-      source.cancel('Operation canceled by the user.')
+      controller.abort()
     }
   }, [])
 
